@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#FAF8F4">
+<title>オタク症候群カルテ診断 | dolloi mypick</title>
+<meta name="description" content="あなたが患っている、オタクの病を診断します。20種のオタク症候群と処方カラー、あなたに必要な推し活アイテムをお届け。">
+<meta property="og:title" content="オタク症候群カルテ診断">
+<meta property="og:description" content="あなたが患っている、オタクの病を診断します。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAF8F4;
+  --bg-alt: #F4F0E8;
+  --ink: #1F1A14;
+  --ink-soft: #4A4238;
+  --ink-light: #8A8275;
+  --line: #D8D0BE;
+  --line-soft: #E8E2D2;
+  --accent: #6B5644;
+  --paper: #FFFFFF;
+  --shadow: 0 2px 24px rgba(31, 26, 20, 0.06);
+  --serif: 'Shippori Mincho B1', 'Yu Mincho', 'YuMincho', serif;
+  --sans: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(216, 208, 190, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(216, 208, 190, 0.12) 0%, transparent 50%);
+}
+
+.app {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 0 24px;
+  min-height: 100vh;
+  position: relative;
+}
+
+.screen {
+  display: none;
+  min-height: 100vh;
+  padding: 48px 0;
+  animation: fadeIn 0.6s ease;
+}
+
+.screen.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================== WELCOME ==================== */
+.welcome {
+  text-align: center;
+  padding-top: 80px;
+}
+
+.welcome-frame {
+  border: 1px solid var(--line);
+  padding: 56px 24px 48px;
+  background: var(--paper);
+  position: relative;
+}
+
+.welcome-frame::before,
+.welcome-frame::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--ink);
+}
+
+.welcome-frame::before {
+  top: -8px;
+  left: -8px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.welcome-frame::after {
+  bottom: -8px;
+  right: -8px;
+  border-left: none;
+  border-top: none;
+}
+
+.welcome-cross {
+  font-family: var(--serif);
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  color: var(--ink-soft);
+  margin-bottom: 32px;
+}
+
+.welcome-cross::before,
+.welcome-cross::after {
+  content: '✚';
+  margin: 0 12px;
+  color: var(--accent);
+}
+
+.welcome-title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.welcome-title .small {
+  display: block;
+  font-size: 16px;
+  letter-spacing: 0.4em;
+  font-weight: 500;
+  color: var(--ink-soft);
+  margin-bottom: 16px;
+}
+
+.welcome-en {
+  font-family: var(--serif);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--ink-light);
+  margin: 24px 0 32px;
+  font-style: italic;
+}
+
+.welcome-desc {
+  font-size: 14px;
+  line-height: 2;
+  color: var(--ink-soft);
+  margin-bottom: 40px;
+  text-align: left;
+  padding: 0 8px;
+}
+
+.welcome-list {
+  text-align: left;
+  margin: 24px 0 40px;
+  padding: 24px;
+  background: var(--bg-alt);
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 2.2;
+}
+
+.welcome-list-title {
+  font-family: var(--serif);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--ink);
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 8px;
+}
+
+.welcome-list-item::before {
+  content: '・';
+  color: var(--accent);
+  margin-right: 4px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  padding: 18px 48px;
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-align: center;
+}
+
+.btn-primary:hover,
+.btn-primary:active {
+  background: var(--accent);
+  transform: translateY(-1px);
+}
+
+.welcome-foot {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--ink-light);
+  margin-top: 24px;
+  font-family: var(--serif);
+}
+
+/* ==================== QUESTION ==================== */
+.question {
+  padding: 32px 0 48px;
+}
+
+.q-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.q-label {
+  font-family: var(--serif);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--ink-light);
+}
+
+.q-counter {
+  font-family: var(--serif);
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.q-counter .current {
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.progress-track {
+  height: 1px;
+  background: var(--line-soft);
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--ink);
+  width: 0%;
+  transition: width 0.5s ease;
+}
+
+.q-text {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  margin-bottom: 32px;
+  min-height: 70px;
+}
+
+.q-mark {
+  display: inline-block;
+  color: var(--accent);
+  margin-right: 8px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.option {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 18px 20px;
+  text-align: left;
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  font-weight: 400;
+}
+
+.option:hover,
+.option:active {
+  border-color: var(--ink);
+  background: var(--bg-alt);
+}
+
+.option.selected {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.option-letter {
+  font-family: var(--serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--ink-light);
+  margin-right: 12px;
+}
+
+.option.selected .option-letter {
+  color: var(--paper);
+  opacity: 0.7;
+}
+
+.q-back {
+  background: transparent;
+  border: none;
+  color: var(--ink-light);
+  font-family: var(--serif);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  padding: 12px;
+  margin-top: 8px;
+}
+
+.q-back:hover {
+  color: var(--ink);
+}
+
+.q-back::before {
+  content: '← ';
+}
+
+/* ==================== RESULT ==================== */
+.result {
+  padding: 32px 0 64px;
+}
+
+.chart {
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  padding: 32px 24px;
+  position: relative;
+  box-shadow: var(--shadow);
+}
+
+.chart::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  border: 1px solid var(--line);
+  pointer-events: none;
+}
+
+.chart-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.chart-head {
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+}
+
+.chart-cross {
+  color: var(--accent);
+  font-size: 18px;
+  margin-bottom: 4px;
+  letter-spacing: 0.5em;
+}
+
+.chart-title-jp {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.chart-title-en {
+  font-family: var(--serif);
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  color: var(--ink-light);
+  font-style: italic;
+}
+
+.chart-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin-bottom: 20px;
+  font-family: var(--serif);
+  letter-spacing: 0.1em;
+}
+
+.chart-meta-label {
+  color: var(--ink-light);
+  margin-right: 6px;
+}
+
+.diagnosis-block {
+  background: var(--bg-alt);
+  padding: 24px 20px;
+  margin: 24px 0;
+  text-align: center;
+  border-top: 2px solid var(--accent-color, var(--ink));
+  border-bottom: 2px solid var(--accent-color, var(--ink));
+}
+
+.diagnosis-label {
+  font-family: var(--serif);
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  color: var(--ink-light);
+  margin-bottom: 8px;
+}
+
+.diagnosis-name {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.diagnosis-severity {
+  display: inline-block;
+  font-family: var(--serif);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--paper);
+  background: var(--accent-color, var(--ink));
+  padding: 4px 14px;
+  font-weight: 500;
+}
+
+.section {
+  margin: 24px 0;
+}
+
+.section-label {
+  font-family: var(--serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 6px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.section-label::before {
+  content: '◆';
+  color: var(--accent-color, var(--accent));
+  margin-right: 8px;
+  font-size: 9px;
+}
+
+.symptoms {
+  list-style: none;
+}
+
+.symptoms li {
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--ink-soft);
+  padding-left: 16px;
+  position: relative;
+  margin-bottom: 4px;
+}
+
+.symptoms li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--accent-color, var(--accent));
+  font-size: 11px;
+}
+
+.cause {
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--ink-soft);
+}
+
+.prescription {
+  background: var(--bg);
+  padding: 18px;
+  border: 1px dashed var(--line);
+}
+
+.prescription-item {
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--ink);
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 4px;
+}
+
+.prescription-item::before {
+  content: counter(rx-item) ".";
+  counter-increment: rx-item;
+  position: absolute;
+  left: 0;
+  font-family: var(--serif);
+  font-weight: 600;
+  color: var(--accent-color, var(--accent));
+}
+
+.prescription {
+  counter-reset: rx-item;
+}
+
+.color-block {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 20px;
+  text-align: center;
+  margin-top: 14px;
+}
+
+.color-label {
+  font-family: var(--serif);
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  color: var(--ink-light);
+  margin-bottom: 8px;
+}
+
+.color-swatch {
+  width: 56px;
+  height: 56px;
+  background: var(--accent-color);
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  border: 2px solid var(--paper);
+  box-shadow: 0 0 0 1px var(--line);
+}
+
+.color-name {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.color-meaning {
+  font-family: var(--serif);
+  font-size: 11px;
+  color: var(--ink-soft);
+  font-style: italic;
+  letter-spacing: 0.1em;
+}
+
+.color-hex {
+  font-family: var(--serif);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--ink-light);
+  margin-top: 6px;
+}
+
+.doctor-msg {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 24px 20px;
+  margin-top: 24px;
+  text-align: center;
+  position: relative;
+}
+
+.doctor-msg-label {
+  font-family: var(--serif);
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  color: var(--paper);
+  opacity: 0.6;
+  margin-bottom: 10px;
+}
+
+.doctor-msg-text {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+}
+
+.chart-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-family: var(--serif);
+  font-size: 10px;
+  color: var(--ink-light);
+  letter-spacing: 0.1em;
+}
+
+.stamp {
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  padding: 6px 10px;
+  font-family: var(--serif);
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  font-weight: 600;
+  transform: rotate(-4deg);
+  display: inline-block;
+}
+
+/* ==================== ACTIONS ==================== */
+.actions {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-shop {
+  background: var(--accent-color, var(--ink));
+  color: var(--paper);
+  border: none;
+  padding: 18px;
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+}
+
+.btn-shop:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.btn-shop::after {
+  content: ' →';
+}
+
+.btn-share {
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  padding: 14px;
+  font-family: var(--serif);
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.btn-share:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.btn-restart {
+  background: transparent;
+  border: none;
+  color: var(--ink-light);
+  font-family: var(--serif);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  padding: 12px;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.btn-restart:hover {
+  color: var(--ink);
+}
+
+.btn-restart::before {
+  content: '↻ ';
+}
+
+.comorbidity {
+  margin-top: 14px;
+  padding: 12px 16px;
+  background: var(--bg);
+  border-left: 3px solid var(--accent-color, var(--accent));
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+.comorbidity-label {
+  font-family: var(--serif);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--ink);
+  margin-right: 8px;
+  font-size: 11px;
+}
+
+/* ==================== UTIL ==================== */
+@media (max-width: 380px) {
+  .welcome-title { font-size: 26px; }
+  .diagnosis-name { font-size: 22px; }
+  .q-text { font-size: 19px; }
+}
+
+/* Print/screenshot styling */
+@media print {
+  body { background: white; }
+  .actions { display: none; }
+}
+
+/* Subtle texture overlay */
+.app::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='2' /%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' /%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.6;
+}
+
+.app > * {
+  position: relative;
+  z-index: 2;
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+
+<!-- ========== WELCOME ========== -->
+<section class="screen active" id="screen-welcome">
+  <div class="welcome">
+    <div class="welcome-frame">
+      <div class="welcome-cross">D I A G N O S I S</div>
+      <h1 class="welcome-title">
+        <span class="small">あなたが患っている</span>
+        オタク症候群<br>カルテ診断
+      </h1>
+      <div class="welcome-en">― OTAKU SYNDROME MEDICAL CHART ―</div>
+
+      <p class="welcome-desc">
+        貢ぎすぎ、グッズ過剰収集、推し情報チェック強迫……。<br><br>
+        あなたが日々抱えている "オタクの病"、その正体を当院が診断いたします。
+      </p>
+
+      <div class="welcome-list">
+        <div class="welcome-list-title">― 診療科目 ―</div>
+        <div class="welcome-list-item">課金・金銭依存系（4種）</div>
+        <div class="welcome-list-item">情報・通知依存系（4種）</div>
+        <div class="welcome-list-item">感情・愛し方系（4種）</div>
+        <div class="welcome-list-item">現場・遠征系（3種）</div>
+        <div class="welcome-list-item">人間関係系（3種）</div>
+        <div class="welcome-list-item">創作・妄想系（2種）</div>
+      </div>
+
+      <button class="btn-primary" onclick="startDiagnosis()">診察を開始する</button>
+      <div class="welcome-foot">10問・約2分</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== QUESTION ========== -->
+<section class="screen" id="screen-question">
+  <div class="question">
+    <div class="q-header">
+      <div class="q-label">― 問 診 ―</div>
+      <div class="q-counter">
+        <span class="current" id="qCurrent">1</span>
+        <span style="opacity:0.4"> / </span>
+        <span>10</span>
+      </div>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <h2 class="q-text" id="qText"></h2>
+    <div class="options" id="qOptions"></div>
+    <button class="q-back" id="qBack" onclick="goBack()" style="display:none">前の問へ戻る</button>
+  </div>
+</section>
+
+<!-- ========== RESULT ========== -->
+<section class="screen" id="screen-result">
+  <div class="result">
+    <div class="chart" id="chartBody">
+      <!-- Filled by JS -->
+    </div>
+
+    <div class="actions">
+      <a class="btn-shop" id="shopLink" href="https://dolloimypick.base.shop/" target="_blank" rel="noopener">処方カラーのアイテムを見る</a>
+      <button class="btn-share" onclick="shareResult()">
+        <span>結果をシェアする</span>
+      </button>
+      <button class="btn-restart" onclick="restart()">もう一度診断する</button>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+// ========== DATA: 20症候群 ==========
+const SYNDROMES = {
+  tsugisugi: {
+    name: "貢ぎすぎ症候群",
+    nameEn: "Over-Devotion Syndrome",
+    category: "課金・金銭系",
+    symptoms: [
+      "推しのためなら家賃以外なんでも切り詰める",
+      "「これは投資」と言い聞かせて課金する",
+      "ボーナス＝推し予算と決まっている",
+      "推しが活動休止すると禁断症状が出る"
+    ],
+    cause: "推しの幸せ＝自分の生きがい、という回路が完成しているため。",
+    prescription: [
+      "ボルドーのスマホショルダーを毎日服用",
+      "推しぬいホルダーで推しを常時携帯",
+      "月1回、自分への報酬として新色を追加"
+    ],
+    color: { name: "ボルドー", hex: "#6B1F3A", meaning: "贖罪と覚悟の色" },
+    message: "もう貢いだものは、身につけて成仏させましょう。"
+  },
+  guzzu: {
+    name: "グッズ過剰収集症",
+    nameEn: "Compulsive Goods Hoarding",
+    category: "課金・金銭系",
+    symptoms: [
+      "同じグッズを「観賞用・保存用・布教用」で複数買う",
+      "棚と壁を占領しても止まらない",
+      "重複しても「これは別物」と言い張る",
+      "推しの実在感を物理で確保したい衝動"
+    ],
+    cause: "推しの存在を物質で証明したい、コレクター本能の暴走。",
+    prescription: [
+      "持ち歩ける推しぬいホルダーで「神棚を携帯」",
+      "推しのメンカラを纏うスマホショルダー",
+      "ペンライトホルダーで現場装備も完備"
+    ],
+    color: { name: "ゴールド", hex: "#B89548", meaning: "信仰の色" },
+    message: "集めるだけでなく、纏って外へ連れ出してあげて。"
+  },
+  koushiki: {
+    name: "公式信仰症候群",
+    nameEn: "Official Devotion Syndrome",
+    category: "課金・金銭系",
+    symptoms: [
+      "公式が出すものは全買いが基本",
+      "二次創作よりも公式絵柄が至高",
+      "公式の言葉は聖典として保存",
+      "「公式」という単語に脳が反応する"
+    ],
+    cause: "公式＝唯一無二の正典、という揺るぎない信仰心。",
+    prescription: [
+      "公式メンカラ完全再現のスマホショルダー",
+      "推しの公式カラーぬいホルダー",
+      "正統派のシンプルなデザインアイテム"
+    ],
+    color: { name: "アイボリー", hex: "#E8DFC8", meaning: "信仰の白" },
+    message: "信仰は、身を飾ることで完成します。"
+  },
+  gacha: {
+    name: "ガチャ無限ループ症",
+    nameEn: "Endless Gacha Loop",
+    category: "課金・金銭系",
+    symptoms: [
+      "「次で出る」を信じて回し続ける",
+      "推しレアは出るまで止めない",
+      "天井課金は当然のマナー",
+      "出た時の脳内麻薬がやめられない"
+    ],
+    cause: "推しを「引き当てる」快感が脳内麻薬化しているため。",
+    prescription: [
+      "確実に手に入る、確定入手の単色ストラップ",
+      "ガチャに頼らない実物の推し色アイテム",
+      "ぬいホルダーで推しを物理確保"
+    ],
+    color: { name: "ターコイズ", hex: "#3DA8B5", meaning: "運命の色" },
+    message: "確実に手に入るもので、心を満たす日があってよし。"
+  },
+  check: {
+    name: "推し情報チェック強迫症",
+    nameEn: "Compulsive Info-Checking",
+    category: "情報・依存系",
+    symptoms: [
+      "5分おきにSNSをチェックしてしまう",
+      "検索タブが推し名で埋め尽くされている",
+      "更新が無いと不安になる",
+      "検索しないと落ち着かない"
+    ],
+    cause: "推しの動向を知らない時間＝損失と感じる脳の誤作動。",
+    prescription: [
+      "視界に常に推し色を入れる鎮静療法",
+      "ラベンダー系スマホショルダー",
+      "推しを物理で感じるぬいホルダー"
+    ],
+    color: { name: "ラベンダー", hex: "#9D8FBE", meaning: "鎮静の色" },
+    message: "スマホを置いて、推し色を見つめる時間を。"
+  },
+  egosa: {
+    name: "エゴサ代理症候群",
+    nameEn: "Proxy Ego-Search",
+    category: "情報・依存系",
+    symptoms: [
+      "推しの代わりに自分がエゴサを担当",
+      "批判コメントを見て自分が傷つく",
+      "推しに見せたくないものから推しを守る使命感",
+      "汚れ役を引き受ける覚悟ができている"
+    ],
+    cause: "推しを守る防衛本能が暴走しているため。",
+    prescription: [
+      "守護色ネイビーのスマホショルダー",
+      "推しを守るお守りキーホルダー",
+      "心を強くする深色アイテム"
+    ],
+    color: { name: "ネイビー", hex: "#26314A", meaning: "守護の色" },
+    message: "あなたの優しさが、いつか推しに届きますように。"
+  },
+  tsuchi: {
+    name: "通知アラート依存症",
+    nameEn: "Notification Dependence",
+    category: "情報・依存系",
+    symptoms: [
+      "通知音で心拍数が上昇する",
+      "通知が鳴らないと逆に不安",
+      "通知を切ると罪悪感がある",
+      "音で推しの存在を感じてしまう"
+    ],
+    cause: "通知＝推しからの呼びかけ、と錯覚する条件反射。",
+    prescription: [
+      "通知を待たずに推しに会える、推し色携帯セット",
+      "覚醒色のスマホショルダー",
+      "推しを常時連れ歩くぬいホルダー"
+    ],
+    color: { name: "マスタード", hex: "#C9A040", meaning: "覚醒の色" },
+    message: "通知を待つより、推しを纏って先回りを。"
+  },
+  scroll: {
+    name: "SNS無限スクロール病",
+    nameEn: "Infinite Scroll Disease",
+    category: "情報・依存系",
+    symptoms: [
+      "気づくと3時間スクロールしている",
+      "推し関連投稿を全て見届けたい",
+      "スクロールしながら寝落ちする",
+      "タグ全制覇が密かな目標"
+    ],
+    cause: "推しに関する全てを見届けたい、全網羅欲求。",
+    prescription: [
+      "物理で推しを所有する安心感を与えるストラップ",
+      "ぬいホルダーで推しを抱きしめる",
+      "ピーチ色の安息アイテム"
+    ],
+    color: { name: "ピーチ", hex: "#E8B8A0", meaning: "安息の色" },
+    message: "画面の外にも、あなたの推しはいます。"
+  },
+  tanori: {
+    name: "担降り恐怖症",
+    nameEn: "Fear of Falling-Off",
+    category: "感情・愛し方系",
+    symptoms: [
+      "推しに飽きるのが何より怖い",
+      "熱が冷めたら自分が終わる気がする",
+      "担降りした人を理解できない",
+      "推しに永遠を誓っている"
+    ],
+    cause: "推しへの愛＝自己同一性、になっているため。",
+    prescription: [
+      "永続的に身につけられる、飽きの来ない黒",
+      "ベーシックカラーの長く使えるストラップ",
+      "推しを永遠に閉じ込めるぬいホルダー"
+    ],
+    color: { name: "ブラック", hex: "#1A1A1A", meaning: "永遠の色" },
+    message: "永遠でも、変わっても、あなたの愛は本物です。"
+  },
+  kaishaku: {
+    name: "解釈一致ハイ症候群",
+    nameEn: "Interpretation-Match High",
+    category: "感情・愛し方系",
+    symptoms: [
+      "推しが理想を体現するたびに過呼吸",
+      "解釈一致で人生を消費している",
+      "解釈不一致は記憶から削除する",
+      "感情のジェットコースターが日常"
+    ],
+    cause: "推し＝自分の理想の投影器、になっているため。",
+    prescription: [
+      "あなたの解釈通りに選べる24色のパレット",
+      "推しを最も表現するローズ色のストラップ",
+      "陶酔の色を纏う"
+    ],
+    color: { name: "ローズ", hex: "#D45C7A", meaning: "陶酔の色" },
+    message: "あなたの解釈が、推しを輝かせています。"
+  },
+  numa: {
+    name: "沼落ち多重債務症",
+    nameEn: "Multi-Oshi Debt",
+    category: "感情・愛し方系",
+    symptoms: [
+      "推しが増え続けて止まらない",
+      "同時に複数の沼にハマる",
+      "時間と金が永遠に分散している",
+      "全員を平等に愛したい博愛精神"
+    ],
+    cause: "推せるものは全て推したい、無限の愛。",
+    prescription: [
+      "推しの数だけ揃えたい24色のラインナップ",
+      "ツーウェイ型で複数推しに対応",
+      "推しごとに付け替えできるストラップ"
+    ],
+    color: { name: "セージグリーン", hex: "#8AA88A", meaning: "調停の色" },
+    message: "愛は分けても、決して減りません。"
+  },
+  fuzai: {
+    name: "担当不在喪失症候群",
+    nameEn: "Oshi-Absence Loss",
+    category: "感情・愛し方系",
+    symptoms: [
+      "推しが活動休止＝魂が抜ける",
+      "日常が機能しなくなる",
+      "過去映像で延命措置に入る",
+      "復帰を待つだけの人生になる"
+    ],
+    cause: "推し＝生命維持装置、になっているため。",
+    prescription: [
+      "推しがいなくても、推し色がそばに",
+      "常時携帯型のストラップで存在感を保つ",
+      "推しぬいホルダーで物理的に連れ歩く"
+    ],
+    color: { name: "ダスティブルー", hex: "#7B95A8", meaning: "哀しみの色" },
+    message: "待つ時間も、推しと共にあると信じて。"
+  },
+  ensei: {
+    name: "遠征中毒症",
+    nameEn: "Tour-Chasing Addiction",
+    category: "現場・遠征系",
+    symptoms: [
+      "全国どこへでも追いかける",
+      "海外遠征も辞さない覚悟",
+      "旅行＝推し追跡の同義語",
+      "飛行機代＝当然の出費"
+    ],
+    cause: "推しと同じ空間にいた事実が、酸素になっているため。",
+    prescription: [
+      "遠征に耐える軽量・丈夫なパラコードストラップ",
+      "肩掛けで両手フリーの機動力",
+      "カーキ色で旅人スタイル"
+    ],
+    color: { name: "カーキ", hex: "#7A7A4A", meaning: "旅の色" },
+    message: "あなたの旅路を、推し色が伴走します。"
+  },
+  genba: {
+    name: "現場依存症",
+    nameEn: "Live-Venue Dependence",
+    category: "現場・遠征系",
+    symptoms: [
+      "現場に行かないと精神が崩れる",
+      "在宅期間は禁断症状が出る",
+      "チケットがないと存在不安",
+      "生で見ないと信じられない"
+    ],
+    cause: "推しの物理的存在を浴びてしか満たされない感性。",
+    prescription: [
+      "現場で目立つビビッドカラーで存在発信",
+      "スカーレットのスマホショルダー",
+      "ペンラホルダーで完全装備"
+    ],
+    color: { name: "スカーレット", hex: "#D43A3A", meaning: "情熱の色" },
+    message: "現場でこそ、あなたも推しに見つけてもらえる。"
+  },
+  bupan: {
+    name: "物販列並びすぎ症",
+    nameEn: "Endless-Queue Syndrome",
+    category: "現場・遠征系",
+    symptoms: [
+      "朝5時から並ぶことに抵抗がない",
+      "物販完売の恐怖と戦う日々",
+      "全種類コンプが当然のマナー",
+      "並んでいる時間も推し時間と考える"
+    ],
+    cause: "並ぶこと自体が、推しへの献身行為だから。",
+    prescription: [
+      "並ぶ時間も推しを感じられるショルダー",
+      "両手がフリーになる肩掛け仕様",
+      "テラコッタ色で粘り強く"
+    ],
+    color: { name: "テラコッタ", hex: "#B85440", meaning: "粘りの色" },
+    message: "並ぶ時間は推しへの祈り、両手は自由に。"
+  },
+  dotan: {
+    name: "同担拒否症候群",
+    nameEn: "Fellow-Fan Rejection",
+    category: "人間関係系",
+    symptoms: [
+      "同担に嫉妬してしまう",
+      "推しを独占したい欲求が強い",
+      "同担歓迎の人を理解できない",
+      "自分だけが推しを理解している自負"
+    ],
+    cause: "推し＝自分だけのもの、という所有欲。",
+    prescription: [
+      "24色から「あなたしか選ばないカラー」を",
+      "孤高のダークグリーンで差別化",
+      "誰とも被らない個性派ストラップ"
+    ],
+    color: { name: "ダークグリーン", hex: "#2A4A35", meaning: "孤高の色" },
+    message: "あなたの推し方は、世界に一つだけ。"
+  },
+  fukyou: {
+    name: "布教伝道熱症",
+    nameEn: "Evangelist Fever",
+    category: "人間関係系",
+    symptoms: [
+      "会う人全員に推しの良さを語る",
+      "新規ファンを増やすのが使命",
+      "推しの認知度が上がると我が事のように嬉しい",
+      "布教用パンフレットを脳内に常備"
+    ],
+    cause: "推しの素晴らしさは世界に共有されるべき、という義務感。",
+    prescription: [
+      "目立つイエローで歩く広告塔に",
+      "推しの存在を伝える伝道カラー",
+      "ぬいホルダーで実物展示"
+    ],
+    color: { name: "イエロー", hex: "#E0B838", meaning: "伝道の色" },
+    message: "あなたの愛が、新たな仲間を呼びます。"
+  },
+  oshitomo: {
+    name: "推し友依存症",
+    nameEn: "Oshi-Friend Dependence",
+    category: "人間関係系",
+    symptoms: [
+      "推し友がいないと活動できない",
+      "推し友との通話が日課",
+      "一人現場が不安で仕方ない",
+      "推し友＝家族レベルの存在"
+    ],
+    cause: "推し活＝コミュニティ活動、という認識。",
+    prescription: [
+      "推し友とお揃いにできる24色展開",
+      "ピンクで友愛のシンボル",
+      "選びやすい色数で「同じものに揃える楽しさ」"
+    ],
+    color: { name: "ピンク", hex: "#F0A0BE", meaning: "友愛の色" },
+    message: "推し友と色を分け合うのも、推し活の喜び。"
+  },
+  mousou: {
+    name: "妄想無限拡張症",
+    nameEn: "Fantasy Expansion Syndrome",
+    category: "創作・妄想系",
+    symptoms: [
+      "推しの世界線を無限に妄想する",
+      "二次創作が止まらない",
+      "IF展開で頭が埋め尽くされる",
+      "推しに関するアイデアが湧き続ける"
+    ],
+    cause: "推しから創造性が引き出される、芸術家気質。",
+    prescription: [
+      "想像力を喚起する詩的なライラックカラー",
+      "夢想を纏うスマホショルダー",
+      "妄想のお供にぬいホルダー"
+    ],
+    color: { name: "ライラック", hex: "#B89AC9", meaning: "夢想の色" },
+    message: "妄想は、推しへの最高の愛し方の一つ。"
+  },
+  kousatsu: {
+    name: "解釈考察ループ症",
+    nameEn: "Interpretation Loop Disorder",
+    category: "創作・妄想系",
+    symptoms: [
+      "推しの一挙手一投足を考察する",
+      "意味のないものに意味を見出す",
+      "考察スレを読み漁る日々",
+      "自分の考察を発信したい衝動"
+    ],
+    cause: "推しを「読む」ことが快感になっているため。",
+    prescription: [
+      "静かに考察に没頭できる落ち着いた深色",
+      "チャコールカラーのスマホショルダー",
+      "思考を深める大人カラー"
+    ],
+    color: { name: "チャコール", hex: "#3A3A3A", meaning: "深淵の色" },
+    message: "あなたの読み解きが、推しを深めています。"
+  }
+};
+
+// ========== DATA: 10問 ==========
+const QUESTIONS = [
+  {
+    text: "推しに月、いくら使っていますか？",
+    options: [
+      { label: "1万円以下（節度を保っている自負）", scores: { progress: 0 } },
+      { label: "1〜3万円（推し活ライト勢）", scores: { progress: 1 } },
+      { label: "3〜5万円（「投資」だと言い聞かせている）", scores: { tsugisugi: 3, ensei: 1, progress: 2 } },
+      { label: "5〜10万円（家計簿は見ない主義）", scores: { tsugisugi: 5, ensei: 3, koushiki: 1, progress: 3 } },
+      { label: "10万円超（推し費から生活費を引いて暮らす）", scores: { tsugisugi: 7, gacha: 2, koushiki: 1, progress: 4 } }
+    ]
+  },
+  {
+    text: "推しのSNS更新通知、何秒で開きますか？",
+    options: [
+      { label: "0秒（通知が鳴る前から張り込んでいる）", scores: { tsuchi: 7, check: 3, progress: 4 } },
+      { label: "30秒以内（即反応・即RT）", scores: { check: 7, tsuchi: 2, scroll: 1, progress: 3 } },
+      { label: "5分以内（一呼吸おいて噛み締める）", scores: { check: 2, progress: 2 } },
+      { label: "1時間以内（気が向いた時）", scores: { scroll: 2, progress: 1 } },
+      { label: "通知は切っている（精神衛生のため）", scores: { egosa: 4, kousatsu: 1, progress: 0 } }
+    ]
+  },
+  {
+    text: "推し関連グッズ、部屋にどれくらいありますか？",
+    options: [
+      { label: "推し祭壇／専用部屋ができている", scores: { guzzu: 6, koushiki: 2, tsugisugi: 1, progress: 4 } },
+      { label: "棚・壁・押し入れを占領している", scores: { guzzu: 3, bupan: 5, gacha: 2, progress: 3 } },
+      { label: "引き出し1つ分におさめている", scores: { progress: 2 } },
+      { label: "厳選した数点だけを大切に", scores: { dotan: 3, kaishaku: 1, ensei: 2, progress: 1 } },
+      { label: "データと記憶の中に住んでいる", scores: { mousou: 2, kousatsu: 2, scroll: 2, check: 2, progress: 1 } }
+    ]
+  },
+  {
+    text: "推しの現場・ライブ、行ける時は？",
+    options: [
+      { label: "全通・遠征・弾丸も辞さない", scores: { ensei: 7, genba: 2, bupan: 3, progress: 4 } },
+      { label: "重要な公演は何があっても駆けつける", scores: { genba: 7, oshitomo: 1, bupan: 1, progress: 3 } },
+      { label: "行ける時にだけ行く", scores: { numa: 1, fukyou: 2, progress: 2 } },
+      { label: "配信視聴がメイン", scores: { scroll: 4, check: 2, fuzai: 2, tsuchi: 2, gacha: 1, progress: 2 } },
+      { label: "在宅で考察するのが幸せ", scores: { kousatsu: 4, mousou: 3, progress: 1 } }
+    ]
+  },
+  {
+    text: "推しが活動休止になったら？",
+    options: [
+      { label: "世界が色を失い、抜け殻になる", scores: { fuzai: 7, tanori: 2, genba: 3, kaishaku: 1, tsugisugi: 1, progress: 4 } },
+      { label: "過去映像とグッズで延命措置に入る", scores: { fuzai: 3, koushiki: 3, tsuchi: 2, scroll: 1, guzzu: 1, progress: 3 } },
+      { label: "他の推しに移って心を守る", scores: { numa: 7, progress: 2 } },
+      { label: "自分の人生を生きる時間にする", scores: { progress: 1 } },
+      { label: "これを機に担降りを検討する", scores: { dotan: 2, progress: 1 } }
+    ]
+  },
+  {
+    text: "推し以外のことを考えている時間は？",
+    options: [
+      { label: "ほぼゼロ（24時間推し脳）", scores: { progress: 5 } },
+      { label: "仕事中だけは現実に戻る", scores: { progress: 4 } },
+      { label: "半分くらい", scores: { progress: 3 } },
+      { label: "推し以外のことがメイン", scores: { progress: 2 } },
+      { label: "思い出した時にふと推す", scores: { progress: 1 } }
+    ]
+  },
+  {
+    text: "同担に対する感情は？",
+    options: [
+      { label: "共有したくない、独占したい", scores: { dotan: 7, tanori: 1, genba: 2, progress: 3 } },
+      { label: "距離をとって静かに見守る", scores: { egosa: 7, kousatsu: 1, progress: 2 } },
+      { label: "仲間意識があり、大切な存在", scores: { oshitomo: 7, progress: 2 } },
+      { label: "布教して同担を増やしたい", scores: { fukyou: 7, oshitomo: 1, progress: 3 } },
+      { label: "自分が複数の推しに散ってしまう", scores: { numa: 4, progress: 2 } }
+    ]
+  },
+  {
+    text: "推しの新グッズが発表されたら？",
+    options: [
+      { label: "即予約。同じものを複数買う", scores: { guzzu: 4, bupan: 4, tsugisugi: 2, progress: 4 } },
+      { label: "厳選して大事なものだけ", scores: { dotan: 1, kaishaku: 1, progress: 2 } },
+      { label: "ガチャなら出るまで回す", scores: { gacha: 7, tsugisugi: 2, progress: 3 } },
+      { label: "公式が出すものは全部信仰する", scores: { koushiki: 7, guzzu: 2, tanori: 1, progress: 3 } },
+      { label: "画像と思い出があれば満たされる", scores: { mousou: 3, kousatsu: 1, scroll: 1, progress: 1 } }
+    ]
+  },
+  {
+    text: "推しが新しい一面（衣装・役柄・発言）を見せた時は？",
+    options: [
+      { label: "解釈一致で叫び続ける", scores: { kaishaku: 7, tanori: 1, progress: 3 } },
+      { label: "二次創作・妄想が爆発する", scores: { mousou: 7, kousatsu: 2, progress: 3 } },
+      { label: "何時間も考察ループに入る", scores: { kousatsu: 7, mousou: 1, egosa: 1, progress: 3 } },
+      { label: "友達に通話して語り合う", scores: { oshitomo: 5, fukyou: 4, tsuchi: 2, progress: 2 } },
+      { label: "スクショ保存して何度も見返す", scores: { egosa: 3, scroll: 4, check: 2, guzzu: 1, progress: 2 } }
+    ]
+  },
+  {
+    text: "推しのいる人生といない人生、選ぶなら？",
+    options: [
+      { label: "推しのいる人生（命と引き換えても）", scores: { tanori: 7, fuzai: 3, kaishaku: 2, dotan: 1, progress: 5 } },
+      { label: "ほぼ全ての時間を推しと共に", scores: { tanori: 3, fuzai: 1, progress: 4 } },
+      { label: "半分は推し、半分は自分", scores: { progress: 3 } },
+      { label: "自分の人生がメイン、推しはスパイス", scores: { progress: 2 } },
+      { label: "精神安定剤として時々頼る", scores: { progress: 1 } }
+    ]
+  }
+];
+
+// ========== STATE ==========
+let currentQ = 0;
+let answers = []; // index of selected option per question
+let scores = {};
+
+// ========== LOGIC ==========
+function startDiagnosis() {
+  currentQ = 0;
+  answers = [];
+  scores = {};
+  Object.keys(SYNDROMES).forEach(k => scores[k] = 0);
+  scores.progress = 0;
+  showScreen('question');
+  renderQuestion();
+}
+
+function showScreen(name) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + name).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+function renderQuestion() {
+  const q = QUESTIONS[currentQ];
+  document.getElementById('qCurrent').textContent = currentQ + 1;
+  document.getElementById('qText').innerHTML = '<span class="q-mark">Q.</span>' + q.text;
+  document.getElementById('progressFill').style.width = ((currentQ) / QUESTIONS.length * 100) + '%';
+
+  const letters = ['A', 'B', 'C', 'D', 'E'];
+  const optsHtml = q.options.map((opt, i) => {
+    const selected = answers[currentQ] === i ? ' selected' : '';
+    return '<button class="option' + selected + '" onclick="selectOption(' + i + ')">' +
+      '<span class="option-letter">' + letters[i] + '.</span>' + opt.label +
+      '</button>';
+  }).join('');
+  document.getElementById('qOptions').innerHTML = optsHtml;
+
+  document.getElementById('qBack').style.display = currentQ > 0 ? 'block' : 'none';
+}
+
+function selectOption(i) {
+  // Reverse previous score if any
+  if (answers[currentQ] !== undefined) {
+    const prevScores = QUESTIONS[currentQ].options[answers[currentQ]].scores;
+    Object.keys(prevScores).forEach(k => {
+      scores[k] = (scores[k] || 0) - prevScores[k];
+    });
+  }
+  // Apply new score
+  answers[currentQ] = i;
+  const newScores = QUESTIONS[currentQ].options[i].scores;
+  Object.keys(newScores).forEach(k => {
+    scores[k] = (scores[k] || 0) + newScores[k];
+  });
+
+  // Visual feedback then advance
+  renderQuestion();
+  setTimeout(() => {
+    if (currentQ < QUESTIONS.length - 1) {
+      currentQ++;
+      renderQuestion();
+    } else {
+      // Complete progress bar
+      document.getElementById('progressFill').style.width = '100%';
+      setTimeout(() => showResult(), 500);
+    }
+  }, 280);
+}
+
+function goBack() {
+  if (currentQ > 0) {
+    currentQ--;
+    renderQuestion();
+  }
+}
+
+function calculateDiagnosis() {
+  // Find top syndrome (excluding 'progress')
+  const sorted = Object.entries(scores)
+    .filter(([k]) => k !== 'progress')
+    .sort((a, b) => b[1] - a[1]);
+
+  const main = sorted[0][0];
+  const second = sorted[1] && sorted[1][1] >= 3 ? sorted[1][0] : null;
+
+  // Severity based on progress score (max ~40)
+  const p = scores.progress || 0;
+  let severity = '軽症';
+  if (p >= 35) severity = '末期';
+  else if (p >= 25) severity = '重症';
+  else if (p >= 15) severity = '中等症';
+
+  return { main, second, severity };
+}
+
+function showResult() {
+  const { main, second, severity } = calculateDiagnosis();
+  const s = SYNDROMES[main];
+
+  // Set accent color CSS variable
+  document.documentElement.style.setProperty('--accent-color', s.color.hex);
+
+  const today = new Date();
+  const dateStr = today.getFullYear() + '年' + (today.getMonth() + 1) + '月' + today.getDate() + '日';
+
+  // Patient ID (random for fun)
+  const patientId = 'No.' + String(Math.floor(Math.random() * 9000) + 1000);
+
+  const symptomsHtml = s.symptoms.map(x => '<li>' + x + '</li>').join('');
+  const prescriptionHtml = s.prescription.map(x => '<div class="prescription-item">' + x + '</div>').join('');
+
+  const comorbidityHtml = second ?
+    '<div class="comorbidity"><span class="comorbidity-label">合併症</span>' + SYNDROMES[second].name + '</div>' : '';
+
+  const html = `
+    <div class="chart-inner">
+      <div class="chart-head">
+        <div class="chart-cross">✚</div>
+        <div class="chart-title-jp">オタク症候群 カルテ</div>
+        <div class="chart-title-en">OTAKU SYNDROME MEDICAL CHART</div>
+      </div>
+
+      <div class="chart-meta">
+        <div><span class="chart-meta-label">患者番号</span>${patientId}</div>
+        <div><span class="chart-meta-label">診断日</span>${dateStr}</div>
+      </div>
+
+      <div class="diagnosis-block">
+        <div class="diagnosis-label">― 診 断 結 果 ―</div>
+        <div class="diagnosis-name">${s.name}</div>
+        <div class="diagnosis-severity">進行度：${severity}</div>
+        ${comorbidityHtml}
+      </div>
+
+      <div class="section">
+        <div class="section-label">症 状</div>
+        <ul class="symptoms">${symptomsHtml}</ul>
+      </div>
+
+      <div class="section">
+        <div class="section-label">発 症 原 因</div>
+        <p class="cause">${s.cause}</p>
+      </div>
+
+      <div class="section">
+        <div class="section-label">処 方 箋</div>
+        <div class="prescription">${prescriptionHtml}</div>
+        <div class="color-block">
+          <div class="color-label">― 処 方 カ ラ ー ―</div>
+          <div class="color-swatch"></div>
+          <div class="color-name">${s.color.name}</div>
+          <div class="color-meaning">${s.color.meaning}</div>
+          <div class="color-hex">${s.color.hex}</div>
+        </div>
+      </div>
+
+      <div class="doctor-msg">
+        <div class="doctor-msg-label">― 担 当 医 よ り ―</div>
+        <div class="doctor-msg-text">${s.message}</div>
+      </div>
+
+      <div class="chart-foot">
+        <div>
+          発行：dolloi mypick 心療内科<br>
+          ${dateStr}
+        </div>
+        <div class="stamp">処方済</div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('chartBody').innerHTML = html;
+  document.documentElement.style.setProperty('--accent-color', s.color.hex);
+
+  // Update shop link button text color
+  showScreen('result');
+
+  // Save for sharing
+  window._currentDiagnosis = s;
+}
+
+function shareResult() {
+  const s = window._currentDiagnosis;
+  const text = `私のオタク症候群は「${s.name}」でした。\n処方カラー：${s.color.name}\n\n#オタク症候群カルテ診断 #dolloimypick`;
+  const url = window.location.href;
+
+  if (navigator.share) {
+    navigator.share({
+      title: 'オタク症候群カルテ診断',
+      text: text,
+      url: url
+    }).catch(() => copyToClipboard(text + '\n' + url));
+  } else {
+    copyToClipboard(text + '\n' + url);
+  }
+}
+
+function copyToClipboard(text) {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('結果をコピーしました！');
+    });
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    alert('結果をコピーしました！');
+  }
+}
+
+function restart() {
+  document.documentElement.style.removeProperty('--accent-color');
+  showScreen('welcome');
+  currentQ = 0;
+  answers = [];
+  scores = {};
+}
+</script>
+</body>
+</html>
